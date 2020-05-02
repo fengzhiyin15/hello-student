@@ -8,16 +8,14 @@ labels = sitk.ReadImage(os.path.join(data_prefix, u, "labels.nii.gz"))
 labels_pred = sitk.ReadImage(os.path.join(data_prefix, u, "labels_pred.nii.gz"))
 labels = labels > 0
 labels_pred = labels_pred > 0
-aa=sitk.HausdorffDistanceImageFilter()
+aa = sitk.HausdorffDistanceImageFilter()
 aa.Execute(labels, labels_pred)
-s=aa.GetHausdorffDistance()
-ss=aa.GetAverageHausdorffDistance()
+s = aa.GetHausdorffDistance()
+ss = aa.GetAverageHausdorffDistance()
 print(s)
 print(ss)
 
-
-
-# labels = labels > 0
+labels = labels > 0
 # labels_contour = sitk.BinaryContour(labels)
 # labels_contour_a = sitk.GetArrayFromImage(labels_contour)
 # labels_pixel = np.where(labels_contour_a != 0)
